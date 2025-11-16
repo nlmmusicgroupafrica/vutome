@@ -8,22 +8,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0A192F;
-      --secondary: #64FFDA;
-      --accent: #FF6B6B;
-      --teal: #20A4F3;
-      --coral: #FF9F1C;
-      --deep-blue: #112240;
-      --light-teal: #72E1D1;
-      --text: #E6F1FF;
-      --light-text: #8892B0;
-      --bg: #0A192F;
-      --card-bg: rgba(17, 34, 64, 0.8);
-      --border: rgba(100, 255, 218, 0.3);
+      --primary: #1A1F2B;
+      --secondary: #FF6B35;
+      --accent: #00A8CC;
+      --deep-blue: #142850;
+      --light-blue: #27496D;
+      --text: #F7F7F7;
+      --light-text: #B0BEC5;
+      --bg: #0C151C;
+      --card-bg: rgba(26, 31, 43, 0.85);
+      --border: rgba(255, 107, 53, 0.4);
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      --gradient: linear-gradient(135deg, var(--teal), var(--secondary), var(--coral));
-      --teal-glow: 0 0 5px rgba(100, 255, 218, 0.5), 0 0 10px rgba(100, 255, 218, 0.4), 0 0 15px rgba(32, 164, 243, 0.3);
-      --coral-glow: 0 0 5px rgba(255, 159, 28, 0.5), 0 0 10px rgba(255, 159, 28, 0.4), 0 0 15px rgba(255, 107, 107, 0.3);
+      --gradient: linear-gradient(135deg, var(--accent), var(--secondary));
+      --accent-glow: 0 0 10px rgba(0, 168, 204, 0.5), 0 0 20px rgba(0, 168, 204, 0.3);
+      --secondary-glow: 0 0 10px rgba(255, 107, 53, 0.5), 0 0 20px rgba(255, 107, 53, 0.3);
     }
     
     * {
@@ -39,8 +37,8 @@
       line-height: 1.6;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 20% 30%, rgba(32, 164, 243, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(255, 159, 28, 0.15) 0%, transparent 40%);
+        radial-gradient(circle at 10% 20%, rgba(0, 168, 204, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 30%);
     }
     
     a {
@@ -68,7 +66,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(10, 25, 47, 0.9);
+      background: rgba(26, 31, 43, 0.95);
       backdrop-filter: blur(10px);
       z-index: 1000;
       padding: 15px 0;
@@ -100,18 +98,11 @@
     .logo img {
       height: 40px;
       transition: var(--transition);
-      filter: drop-shadow(0 0 5px rgba(32, 164, 243, 0.5));
+      filter: drop-shadow(0 0 5px rgba(0, 168, 204, 0.5));
     }
     
     .logo:hover img {
       transform: rotate(10deg) scale(1.1);
-    }
-    
-    .logo-full-name {
-      font-size: 1.2rem;
-      margin-left: 5px;
-      color: var(--text);
-      font-weight: 600;
     }
     
     nav ul {
@@ -153,7 +144,7 @@
     .hero {
       padding: 180px 0 100px;
       text-align: center;
-      background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9));
+      background: linear-gradient(rgba(12, 21, 28, 0.9), rgba(12, 21, 28, 0.9));
       background-size: cover;
       background-position: center;
       position: relative;
@@ -168,8 +159,8 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 30%, rgba(32, 164, 243, 0.2) 0%, transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(255, 159, 28, 0.2) 0%, transparent 30%);
+        radial-gradient(circle at 20% 30%, rgba(0, 168, 204, 0.2) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(255, 107, 53, 0.2) 0%, transparent 30%);
       z-index: 1;
     }
     
@@ -195,7 +186,7 @@
     .hero-image img {
       width: 100%;
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(32, 164, 243, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 168, 204, 0.3);
       border: 3px solid transparent;
       background: var(--gradient) padding-box, var(--gradient) border-box;
       background-origin: border-box;
@@ -266,12 +257,12 @@
     .btn-primary {
       background: var(--gradient);
       color: white;
-      box-shadow: 0 5px 15px rgba(32, 164, 243, 0.3);
+      box-shadow: 0 5px 15px rgba(0, 168, 204, 0.3);
     }
     
     .btn-primary:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(32, 164, 243, 0.4), var(--teal-glow);
+      box-shadow: 0 10px 20px rgba(0, 168, 204, 0.4), var(--accent-glow);
       color: white;
     }
     
@@ -285,7 +276,7 @@
       background: var(--secondary);
       color: var(--primary);
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(100, 255, 218, 0.3), var(--teal-glow);
+      box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3), var(--secondary-glow);
     }
     
     /* Sections */
@@ -345,7 +336,7 @@
     
     .about-card:hover {
       transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(32, 164, 243, 0.2);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 168, 204, 0.2);
     }
     
     .about-card img {
@@ -376,7 +367,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(32, 164, 243, 0.1) 0%, transparent 70%);
+      background: radial-gradient(circle at center, rgba(0, 168, 204, 0.1) 0%, transparent 70%);
       z-index: 0;
     }
     
@@ -405,7 +396,7 @@
     .series-description {
       max-width: 800px;
       margin: 0 auto 40px;
-      background: rgba(17, 34, 64, 0.6);
+      background: rgba(26, 31, 43, 0.6);
       padding: 30px;
       border-radius: 15px;
       border: 1px solid var(--border);
@@ -441,7 +432,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at top right, rgba(32, 164, 243, 0.1) 0%, transparent 70%);
+      background: radial-gradient(circle at top right, rgba(0, 168, 204, 0.1) 0%, transparent 70%);
       z-index: 0;
     }
     
@@ -462,7 +453,7 @@
     
     .host-info:hover img {
       transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(32, 164, 243, 0.4);
+      box-shadow: 0 8px 25px rgba(0, 168, 204, 0.4);
     }
     
     .host-info-content {
@@ -482,7 +473,7 @@
     
     .host-info .title {
       font-size: 1.2rem;
-      color: var(--light-teal);
+      color: var(--accent);
       text-align: center;
       font-weight: 600;
     }
@@ -503,7 +494,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(255, 159, 28, 0.1) 0%, transparent 70%);
+      background: radial-gradient(circle at center, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
       z-index: 0;
     }
     
@@ -553,7 +544,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at top right, rgba(255, 159, 28, 0.1) 0%, transparent 70%);
+      background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
       z-index: 0;
     }
     
@@ -574,7 +565,7 @@
     
     .mother-tribute:hover img {
       transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(255, 159, 28, 0.4);
+      box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
     }
     
     .mother-tribute-content {
@@ -594,7 +585,7 @@
     
     .mother-tribute .title {
       font-size: 1.2rem;
-      color: var(--light-teal);
+      color: var(--accent);
       text-align: center;
       font-weight: 600;
     }
@@ -629,7 +620,7 @@
     
     .family-member:hover img {
       transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(32, 164, 243, 0.5);
+      box-shadow: 0 0 20px rgba(0, 168, 204, 0.5);
     }
     
     .family-member h3 {
@@ -659,7 +650,7 @@
     
     .release-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(32, 164, 243, 0.2);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 168, 204, 0.2);
     }
     
     .release-image {
@@ -697,7 +688,7 @@
     
     /* Footer */
     footer {
-      background: rgba(10, 25, 47, 0.95);
+      background: rgba(26, 31, 43, 0.95);
       color: var(--text);
       padding: 60px 0 30px;
       text-align: center;
@@ -846,10 +837,6 @@
         text-align: center;
       }
       
-      .logo-full-name {
-        display: none;
-      }
-      
       .nlm-family h2 {
         font-size: 2rem;
       }
@@ -930,7 +917,7 @@
     
     .platform-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(32, 164, 243, 0.3);
+      box-shadow: 0 5px 15px rgba(0, 168, 204, 0.3);
     }
     
     /* Contact Icons */
@@ -960,12 +947,12 @@
       color: white;
       font-size: 30px;
       transition: var(--transition);
-      box-shadow: 0 5px 15px rgba(32, 164, 243, 0.3);
+      box-shadow: 0 5px 15px rgba(0, 168, 204, 0.3);
     }
     
     .contact-icon a:hover {
       transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 8px 20px rgba(32, 164, 243, 0.5);
+      box-shadow: 0 8px 20px rgba(0, 168, 204, 0.5);
     }
     
     .contact-icon span {
