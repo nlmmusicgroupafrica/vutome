@@ -72,6 +72,7 @@
       padding: 15px 0;
       border-bottom: 1px solid var(--border);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
     }
     
     .header-container {
@@ -143,6 +144,16 @@
     
     nav a:hover::after {
       width: 100%;
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
     }
     
     /* Hero Section */
@@ -654,30 +665,6 @@
       background: var(--gradient);
     }
     
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin: 30px 0;
-    }
-    
-    .social-links a {
-      color: var(--light-text);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-    }
-    
-    .social-links a:hover {
-      color: var(--secondary);
-      transform: translateY(-3px);
-    }
-    
     .footer-links {
       display: flex;
       justify-content: center;
@@ -788,6 +775,36 @@
       .nlm-family h2 {
         font-size: 2rem;
       }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      nav {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 31, 43, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 999;
+      }
+      
+      nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        text-align: center;
+      }
     }
     
     /* Floating elements animation */
@@ -870,6 +887,7 @@
       justify-content: center;
       gap: 40px;
       margin: 40px 0;
+      flex-wrap: wrap;
     }
     
     .contact-icon {
@@ -911,6 +929,7 @@
       justify-content: center;
       gap: 20px;
       margin: 30px 0;
+      flex-wrap: wrap;
     }
     
     .icon-only a {
@@ -969,7 +988,10 @@
         <img src="logo.png" alt="Sunday Sermons MusiQ">
         <span>Sunday Sermons MusiQ</span>
       </a>
-      <nav>
+      <button class="mobile-menu-btn" id="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="main-nav">
         <ul>
           <li><a href="#" onclick="showPage('home')" id="nav-home">Home</a></li>
           <li><a href="#" onclick="showPage('episodes')" id="nav-episodes">Episodes</a></li>
@@ -1056,8 +1078,7 @@
       <div class="container">
         <h2 class="section-title">Episodes</h2>
         
-        
-          
+        <div class="music-platforms">
           <div class="platform-card">
             <i class="fab fa-youtube platform-icon"></i>
             <h3 class="platform-name">YouTube</h3>
@@ -1070,17 +1091,15 @@
           <div class="release-info">
             <h3 class="release-title">Episode 01 Blessed By Deep Root 7</h3>
             <p class="release-description">
-              The pews are silent, the air is charged. The first sacred session of Sunday Sermons MusiQ commences with Deep Root 7 delivering the doctrine of deep house. This isn't just a mix; it's a pilgrimage into the artist's own sonic sanctuary. Every pad, every pulse, every whispered vocal is a testament to their craft—a raw, unfiltered communion between creator and congregation. Let the atmospheric rhythms be your guide and the bassline your prayer. Your weekly ritual for the soul begins now.
+              The pews are silent, the air is charged. The first sacred session of Sunday Sermons MusiQ commenses with Deep Root 7 delivering the doctrine of deep house. This isn't just a mix; it's a pilgrimage into the artist's own sonic sanctuary. Every pad, every pulse, every whispered vocal is a testament to their craft—a raw, unfiltered communion between creator and congregation. Let the atmospheric rhythms be your guide and the bassline your prayer. Your weekly ritual for the soul begins now.
             </p>
             <div class="release-links">
               <a href="https://youtu.be/_lgZxkVwiM0?si=o7ZpXcVG-FXY5mtE" class="btn btn-primary" target="_blank">Stream Now</a>
-              <a href="https://www.mediafire.com/file/bexoo4z2jz1bltx/Sunday_Sermons_MusiQ_Episode_01_Blessed_By_Deep_Root_07.zip/file" class="btn btn-outline">Download</a>
+              <a href="https://www.mediafire.com/file/bexoo4z2jz1bltx/Sunday_Sermons_MusiQ_Episode_01_Blessed_By_Deep_Root_07.zip/file" class="btn btn-outline" target="_blank">Download</a>
             </div>
           </div>
         </div>
-        
-     
-         
+      </div>
     </section>
   </div>
 
@@ -1169,11 +1188,9 @@
       </div>
       
       <div class="icon-only">
-       
         <a href="https://www.facebook.com/sundaysermonsmusiq" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://vm.tiktok.com/ZMH3X5EJPsMEn-jhwZT/" target="_blank"><i class="fab fa-tiktok"></i></a>
         <a href="https://youtube.com/@sundaysermonsmusiq?si=QtcPaIRtgG3UL-O_" target="_blank"><i class="fab fa-youtube"></i></a>
-        
       </div>
       
       <p style="margin-top: 30px; color: var(--light-text); font-size: 0.8rem;">
@@ -1204,6 +1221,9 @@
       
       // Update URL hash
       window.location.hash = pageId;
+      
+      // Close mobile menu if open
+      document.getElementById('main-nav').classList.remove('active');
     }
     
     // Check URL hash on page load
@@ -1234,6 +1254,21 @@
       floatingElements.forEach((el, index) => {
         el.style.animationDelay = `${index * 0.2}s`;
       });
+    });
+    
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('main-nav').classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.getElementById('main-nav');
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      
+      if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+        nav.classList.remove('active');
+      }
     });
   </script>
 </body>
